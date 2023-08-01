@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link} from 'react-router-dom';
 import { BsFillRocketTakeoffFill} from "react-icons/bs";
 
-axios.defaults.baseURL="https://test5-6umn.onrender.com/"
+axios.defaults.baseURL="https://test7-tx4x.onrender.com"
 
 function Userdetails() {
  
