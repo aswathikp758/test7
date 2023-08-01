@@ -1,0 +1,39 @@
+.img{
+    width: 100px;
+    height: 100px;
+}
+.div-width{
+    max-width: 700px;
+	height: 500px;   
+}
+.p-width{
+    max-width: 300px;
+    text-align: justify;
+}
+.img-height{
+   
+    height: 400px;
+    width: 100%;
+}
+.img-height2{
+   
+    height: 300px;
+   
+    width: 100%;
+}
+.form-width{
+    width: 200px;
+    height: 200px;
+}
+.menu-padding{
+    padding-left: 26%;
+}
+.map-margin{
+    margin-top: 5%;
+   
+}
+.banner-size{
+    width: 600px;
+    height: 300px;
+    margin-top: 40px;
+}
