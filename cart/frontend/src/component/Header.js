@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../assest/logo.png";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import { BsCartFill } from "react-icons/bs";
@@ -7,6 +7,7 @@ import { useDispatch, useSelector} from "react-redux";
 import { logoutRedux } from "../redux/userSlice";
 import { toast } from "react-hot-toast";
 import  ReactDOM  from "react-dom";
+import './component.styles.css';
 
 
 const Header = () => {
@@ -22,6 +23,10 @@ const Header = () => {
     toast("Logout successfully");
     navigate('/adminlogin');
   };
+  const adminLogin=()=>{
+    navigate('/adminlogin');
+  };
+
 
   const cartItemNumber = useSelector((state)=>state.product.cartItem)
   return (
@@ -37,15 +42,31 @@ const Header = () => {
 
         <div className="flex items-center gap-4 md:gap-7">
           <nav className="gap-4 md:gap-6 text-base md:text-lg hidden md:flex">
-            <Link to={""} className="text-danger">Home</Link>
-            <Link to={"menu/64818b51e19a62796ed6fc91"} className="text-danger">Menu</Link>
-            <Link to={"about"} className="text-danger">About</Link>
-            <Link to={"contact"} className="text-danger">Contact</Link>
+            <NavLink to={""} className="text-black fnt" style={({ isActive, isPending }) => {    return {
+      color: isActive ? "green" : "black",
+      fontWeight: isPending ? "bold" : "",
+    };
+  }}>HOME</NavLink>
+            <NavLink to={"menu/64818b51e19a62796ed6fc91"} className="text-black fnt" style={({ isActive, isPending }) => {    return {
+      color: isActive ? "green" : "black",
+      fontWeight: isPending ? "bold" : "",
+    };
+  }}>MENU</NavLink>
+            <NavLink to={"about"} className="text-black fnt" style={({ isActive, isPending }) => {    return {
+      color: isActive ? "green" : "black",
+      fontWeight: isPending ? "bold" : "",
+    };
+  }}>ABOUT</NavLink>
+            <NavLink to={"contact"} className="text-black fnt" style={({ isActive, isPending }) => {    return {
+      color: isActive ? "green" : "black",
+      fontWeight: isPending ? "bold" : "",
+    };
+  }}>CONTACT</NavLink>
            
           </nav>
           <div className="text-2xl text-slate-600 relative">
           
-              <Link to={"cart"} className="text-danger"><BsCartFill />
+              <Link to={"cart"} className="text-green-600"><BsCartFill />
               <div className="absolute -top-1 -right-1 text-white bg-red-500 h-4 w-4 rounded-full m-0 p-0 text-sm text-center ">
                 {cartItemNumber.length}
                 
@@ -108,6 +129,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+      <button onClick={adminLogin} className="cursor-pointer">+admin</button>
 
       {/* mobile */}
     </header>

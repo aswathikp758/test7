@@ -31,14 +31,12 @@ const Home = () => {
   const preveProduct = () => {
     slideProductRef.current.scrollLeft -= 200;
   };
-  const adminLogin=()=>{
-    navigate('/adminlogin');
-  };
-
+  
  
 
   return (
     <div className="p-2 md:p-4">
+       
       <div className=""><img src={slide} alt="" className="img-height"/></div>
      
       <div className="md:flex gap-4 py-2">
@@ -135,7 +133,7 @@ const Home = () => {
      
       
       <AllProduct heading={"Your Product"}/>
-      <button onClick={adminLogin} className="cursor-pointer">admin</button>
+     
 
       <Footer/>
 

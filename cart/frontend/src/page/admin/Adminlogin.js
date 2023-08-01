@@ -53,7 +53,7 @@ const Adminlogin = () => {
       if(dataRes.alert){
          dispatch(loginRedux(dataRes));
          setTimeout(() => {
-          navigate("/dashboard")
+          navigate("/admin")
         },1000)
       }
     

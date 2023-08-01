@@ -2,3 +2,8 @@
     width: 10px;
     height: 10px;
 }
+.fnt{
+    font-size: 16px;
+    font-weight:bold;
+    text-decoration: none;
+}

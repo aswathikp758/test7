@@ -38,10 +38,10 @@ const CardFeature = ({ image, name, price, category, loading, id }) => {
             </p>
           </Link>
           <button
-            className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 w-full text-red-600"
+            className="bg-yellow-400 py-1 mt-2 rounded hover:bg-yellow-600 w-full text-green-600 font-weight-bold"
          onClick={handleAddCartProduct} 
           >
-            Add Cart
+            ADD CART
           </button>
         </>
       ) : (
