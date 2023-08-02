@@ -42,7 +42,7 @@ app.get("/",(req,res)=>{
 //signup
 app.post("/signup",async(req,res)=>{
     console.log(req.body)
-    const {email} =req.body
+    const {email,image} =req.body
 
     userModel.findOne({email:email},(err,result)=>{
        console.log(result)
@@ -51,10 +51,13 @@ app.post("/signup",async(req,res)=>{
         res.send({message:"Email id is already register",alert:false})
 
        }
+      
        else{
         const data=userModel(req.body)
         data.save();
-        res.send({message:"successfully sign up ",alert:true})
+         const date_ob = new Date();
+         //console.log(date_ob);
+        res.send({message:"successfully sign up ",date_ob,alert:true})
        }
     });
 });
@@ -63,21 +66,26 @@ app.post("/signup",async(req,res)=>{
 
 app.post("/login",(req,res)=>{
     console.log(req.body)
-    const {email}=req.body
-    userModel.findOne({email:email},(err,result)=>{
-        if(result){
-                const dataSend={
+    const {email,password}=req.body
+ 
+    userModel.findOne({email:email,password:password},(err,result)=>{
+       
+          if (result) {
+             const dataSend={
                 _id:result._id,
                 firstName:result.firstName,
                 lastName:result.lastName,
                 email:result.email,
                 image:result.image,
+                password:result.password,
             };
             console.log(dataSend);
             res.send({message:"Login is successfully",alert:true,data:dataSend});
-        }
+
+          }
+               
         else{
-             res.send({message:"Email is not available,please sign up",alert:false});
+             res.send({message:"Incorrect Email and Password or please sign up",alert:false});
         }
     });
 });
@@ -89,8 +97,8 @@ app.post("/login",(req,res)=>{
 
 app.post("/admin_login",(req,res)=>{
     console.log(req.body)
-    const {email}=req.body
-    userModel.findOne({email:email},(err,result)=>{
+    const {email,password}=req.body
+    userModel.findOne({email:email,password:password},(err,result)=>{
         if(result){
                 const dataSend={
                 _id:result._id,
@@ -103,7 +111,7 @@ app.post("/admin_login",(req,res)=>{
             res.send({message:"Login is successfully",alert:true,data:dataSend});
         }
         else{
-             res.send({message:"Email is not available,please sign up",alert:false});
+             res.send({message:"Incorrect Email and Password or please sign up",alert:false});
         }
     });
 });
@@ -120,11 +128,12 @@ app.post("/admin_login",(req,res)=>{
 //product section
 
 const schemaProduct = mongoose.Schema({
-   name:String,
+     name:String,
     category:String,
     image:String,
     price:String,
-    description:String
+    description:String,
+   
 
 });
 const productModel=mongoose.model("product",schemaProduct)
@@ -213,36 +222,10 @@ app.post("/checkout-payment",async(req,res)=>
 //----------------payment status---------------
 
 
-//save payment status in data 
-//api
 
-// app.post("/paymentStatus",async(req,res)=>{
-//     console.log(req.body)
-//     const data= await orderModel(req.body)
-//     data.save();
-//    // res.send({message:"upload successfully"})
-// })
-
-
-//--------------------------
-// app.post("/delete/:productId",async(req,res)=>{
-//     const productId=req.params.productId;
-//     try{
-//         await 
-//         db.collection("products")
-//         .doc(`/${productId}`)
-//         .delete()
-//         .then((result)=>{
-//             return res.status(200).send({success:true,data:result});
-//         });
-//       }
-//     catch(err){
-//        return res.send({success:false,msg:`Error:${err}`});
-
-//     }
-// })
 app.get("/getdata",async(req,res)=>{
-    const data=await productModel.find({})
+    const sort = { length: -1 };
+    const data=await productModel.find({}).sort(sort);
     res.json({success:true,data:data})
 })
 app.put("/update",async(req,res)=>{

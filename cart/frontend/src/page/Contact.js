@@ -2,10 +2,12 @@ import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import banner2 from '../assest/banner4.jpg';
 import Footer from './footer/Footer';
+import { useNavigate } from 'react-router-dom';
 
 const Contact = () => {
 
  const form = useRef();
+ const navigate = useNavigate();
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -13,6 +15,8 @@ const Contact = () => {
     emailjs.sendForm('service_w6i5kuv', 'template_hw5kq4y', form.current, 'StdL-dZoRgaZ4bTOT')
       .then((result) => {
           console.log(result.text);
+          alert("Posted Successfully");
+          navigate("/");
       }, (error) => {
           console.log(error.text);
       });

@@ -40,6 +40,7 @@ function Signup() {
   const handleUploadProfileImage = async(e)=>{
       const data = await ImagetoBase64(e.target.files[0])
       console.log(data)
+     
        
       setData((preve)=>{
           return{
@@ -56,7 +57,7 @@ function Signup() {
     if (firstName && lastName && email && password && confirmPassword && image) {
       if (password === confirmPassword) {
 
-        const fetchData=await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/signup`,{
+          const fetchData=await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/signup`,{
           method:"POST",
           headers:{
             "content-type":"application/json"
@@ -78,6 +79,9 @@ function Signup() {
         alert("password and confirm password not equal");
       }
     } else {
+       if(image===""){
+         alert("Please upload your image");
+       }
       alert("Please Enter required fields");
     }
   };

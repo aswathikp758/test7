@@ -21,7 +21,7 @@ const Header = () => {
   const handleLogout = () => {
     dispatch(logoutRedux());
     toast("Logout successfully");
-    navigate('/adminlogin');
+    navigate('/login');
   };
   const adminLogin=()=>{
     navigate('/adminlogin');
@@ -41,27 +41,27 @@ const Header = () => {
         </Link>
 
         <div className="flex items-center gap-4 md:gap-7">
-          <nav className="gap-4 md:gap-6 text-base md:text-lg hidden md:flex">
+          <nav className="gap-4 md:gap-6 text-base md:text-lg hidden md:flex ">
             <NavLink to={""} className="text-black fnt" style={({ isActive, isPending }) => {    return {
       color: isActive ? "green" : "black",
       fontWeight: isPending ? "bold" : "",
     };
-  }}>HOME</NavLink>
+  }}>Home</NavLink>
             <NavLink to={"menu/64818b51e19a62796ed6fc91"} className="text-black fnt" style={({ isActive, isPending }) => {    return {
       color: isActive ? "green" : "black",
       fontWeight: isPending ? "bold" : "",
     };
-  }}>MENU</NavLink>
+  }}>Menu</NavLink>
             <NavLink to={"about"} className="text-black fnt" style={({ isActive, isPending }) => {    return {
       color: isActive ? "green" : "black",
       fontWeight: isPending ? "bold" : "",
     };
-  }}>ABOUT</NavLink>
+  }}>About</NavLink>
             <NavLink to={"contact"} className="text-black fnt" style={({ isActive, isPending }) => {    return {
       color: isActive ? "green" : "black",
       fontWeight: isPending ? "bold" : "",
     };
-  }}>CONTACT</NavLink>
+  }}>Contact</NavLink>
            
           </nav>
           <div className="text-2xl text-slate-600 relative">
@@ -108,21 +108,26 @@ const Header = () => {
                   </Link>
                 )}
                 <nav className="text-base md:text-lg flex flex-col md:hidden">
-                  <Link to={""} className="px-2 py-1 text-danger">
-                    Home
-                  </Link>
-                  <Link
-                    to={"menu/64818b51e19a62796ed6fc91"}
-                    className="px-2 py-1 text-danger"
-                  >
-                    Menu
-                  </Link>
-                  <Link to={"about"} className="px-2 py-1 text-danger">
-                    About
-                  </Link>
-                  <Link to={"contact"} className="px-2 py-1 text-danger">
-                    Contact
-                  </Link>
+                   <NavLink to={""} className="text-black fnt" style={({ isActive, isPending }) => {    return {
+      color: isActive ? "green" : "black",
+      fontWeight: isPending ? "bold" : "",
+    };
+  }}>Home</NavLink>
+            <NavLink to={"menu/64818b51e19a62796ed6fc91"} className="text-black fnt" style={({ isActive, isPending }) => {    return {
+      color: isActive ? "green" : "black",
+      fontWeight: isPending ? "bold" : "",
+    };
+  }}>Menu</NavLink>
+            <NavLink to={"about"} className="text-black fnt" style={({ isActive, isPending }) => {    return {
+      color: isActive ? "green" : "black",
+      fontWeight: isPending ? "bold" : "",
+    };
+  }}>About</NavLink>
+            <NavLink to={"contact"} className="text-black fnt" style={({ isActive, isPending }) => {    return {
+      color: isActive ? "green" : "black",
+      fontWeight: isPending ? "bold" : "",
+    };
+  }}>Contact</NavLink>
                 </nav>
               </div>
             )}
